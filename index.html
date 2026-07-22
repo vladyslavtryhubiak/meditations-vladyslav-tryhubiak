@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- Fenêtre d'information -->
+<div class="info">
+    <button class="infoBtn">i</button>
+    <div class="infoPanel">
+
+       <p>
+            <b>Move mouse</b> and <b>click</b> to interact. <br><br>
+            Press <b>🗖</b> for fullscreen.<br><br>
+            Press <b>➜</b> for next image. <br><br>
+        </p>
+    </div>
+</div>
+
+<div id="footerText">
+    Meditations on seeing and knowing | by Vladyslav Tryhubiak, 2026
+</div>
+
+
+<iframe id="viewer" src="1-mountain.html"></iframe>
+
+<button id="fsBtn">🗖</button>
+<button id="nextBtn">➜</button>
+
+<script>
+const sketches = [
+  "1-mountain.html",
+  "2-landscape.html",
+  "3-flower.html",
+  "4-three_flowers.html",
+  "5-evShape.html",
+  "6-crazy_flower.html",
+];
+
+let current = 0;
+
+const frame = document.getElementById("viewer");
+
+document.getElementById("fsBtn").onclick = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+};
+
+document.getElementById("nextBtn").onclick = () => {
+  current = (current + 1) % sketches.length;
+  frame.src = sketches[current];
+};
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "f") {
+    document.documentElement.requestFullscreen();
+  }
+});
+</script>
+
+</body>
+</html>
