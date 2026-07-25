@@ -10,8 +10,7 @@ let extraCanvas;
 let animationFinished = false;
 
 let current = 0;
-let message =
-  "Despite all the knowledge, there is something there,\n     wich can be discovered only on your own.";
+let message = "Despite all the knowledge, there is something there,\n     which can be discovered only on your own.";
 
 // ---------- TIMING ----------
 const ANIMATION_DELAY = 4000;   // mountain starts after 8 s
