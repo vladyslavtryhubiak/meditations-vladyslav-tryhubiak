@@ -1,7 +1,7 @@
 let angle = 0;
 let extraCanvas;
 
-let message = "    Knowledge is the matter, wisdom is the space to hold it.\nWithout enough space, even the brightest knowledge exhausts itself.";
+let message = "      Knowledge is the matter, wisdom is the space to hold it.\nWithout enough space, even the brightest knowledge exhausts itself.";
 let current = 0;
 
 
