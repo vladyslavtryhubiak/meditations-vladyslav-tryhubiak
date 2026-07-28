@@ -43,7 +43,7 @@ function draw() {
     extraCanvas.strokeWeight(3);
 
     noiseDetail(5);
-    let y = map(noise(frameCount * 0.02), 0, 0.9, 230, 440);  //200 & 400   //0? intensity, yVar, yYvar)
+    let y = map(noise(frameCount * 0.02), 0, 0.9, 230, 420);  //200 & 400   //0? intensity, yVar, yYvar)
 
     x += 4;
 
