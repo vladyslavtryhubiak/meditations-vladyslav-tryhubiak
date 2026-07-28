@@ -2,7 +2,7 @@ let x = 400;
 let speed = 5;
 let yVar = 40;     //40
 let yYvar = 280;   //290
-let yOffset = 50;
+let yOffset = 100;
 
 let oldX;
 let oldY;
