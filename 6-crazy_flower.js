@@ -5,7 +5,7 @@ let current = 0;
 let message = "Knowledge isn't what is found, but what keeps unfolding.";
 
 const TEXT_DELAY = 0;       // text starts after 0.4 s
-const TEXT_VISIBLE = 8000;   // visible for 10 s
+const TEXT_VISIBLE = 10000;   // visible for 10 s
 const TEXT_FADE = 2000;       // fade for 2 s
 // ----------------------------
 

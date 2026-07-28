@@ -1,7 +1,8 @@
 let x = 400;
 let speed = 5;
-let yVar = 40;
-let yYvar = 290;
+let yVar = 40;     //40
+let yYvar = 280;   //290
+let yOffset = 30;
 
 let oldX;
 let oldY;
@@ -15,7 +16,7 @@ let message = "Despite all the knowledge, there is something there,\n     which 
 // ---------- TIMING ----------
 const ANIMATION_DELAY = 4000;   // mountain starts after 8 s
 const TEXT_DELAY = 400;       // text starts after 0.4 s
-const TEXT_VISIBLE = 8000;   // visible for 10 s
+const TEXT_VISIBLE = 10000;   // visible for 10 s
 const TEXT_FADE = 2000;       // fade for 2 s
 // ----------------------------
 
@@ -48,19 +49,14 @@ function draw() {
     noiseDetail(4);
 
     let y = map(
-      noise(frameCount * 0.04),
-      0,
-      1.2,
-      yVar,
-      yYvar
-    );
+      noise(frameCount * 0.04), 0, 1.2, yVar, yYvar) + yOffset;
 
     x += speed;
 
     if (x > width - 300 || x < 300) {
       speed *= -1;
-      yVar += 100;
-      yYvar += 20;
+      yVar += 90;  //100    //straight at 70 & 20
+      yYvar += 20;  //20
     }
 
     if (oldX !== undefined) {
@@ -70,7 +66,7 @@ function draw() {
     oldX = x;
     oldY = y;
 
-    if (y > height - 200) {
+    if (y > height - 100) {
       animationFinished = true;
     }
   }
@@ -79,7 +75,7 @@ function draw() {
   // CANVAS 2 - TEXT
   //-----------------------------------------
 
-  background(220);
+  background(240);
 
   // draw mountain underneath
   image(extraCanvas, 0, 0);
@@ -97,14 +93,7 @@ function draw() {
     let alpha = 255;
 
     if (t >= textFadeStart) {
-      alpha = map(
-        t,
-        textFadeStart,
-        textEnd,
-        255,
-        0,
-        true
-      );
+      alpha = map(t,textFadeStart,textEnd,255,0,true);
     }
 
     fill(50, alpha);
@@ -121,7 +110,7 @@ function draw() {
 
 function resetSketch() {
 
-  extraCanvas.background(220);
+  extraCanvas.background(240);
 
   x = 300;
   speed = 5;

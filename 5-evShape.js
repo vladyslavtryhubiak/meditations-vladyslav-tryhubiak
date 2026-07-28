@@ -2,12 +2,14 @@ petalNumber = 8
 let waves = [];
 
 let current = 0;
-let message = "Our mind separates everything in distinct things,\nyet everything is a variation of the same source.";
+let message = "Our mind separates everything into distinct things,\nyet everything is a variation of the same source.";
 
 const TEXT_DELAY = 0;       // text starts after 0.4 s
-const TEXT_VISIBLE = 8000;   // visible for 10 s
+const TEXT_VISIBLE = 10000;   // visible for 10 s
 const TEXT_FADE = 2000;       // fade for 2 s
 // ----------------------------
+const MAX_WAVES = 20;
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -30,9 +32,8 @@ for (let i = waves.length - 1; i >= 0; i--) {
 
   drawWave(waves[i]);
 
-  waves[i].scale += 0.02;
-  waves[i].alpha -= 2;
-
+  waves[i].scale += 0.01; //expansion speed
+  waves[i].alpha -= 2.5; //fading speed
   if (waves[i].alpha <= 0) {
     waves.splice(i, 1);
   }
@@ -128,42 +129,62 @@ function thecursor(){
 }
 
 
-function mousePressed() {
-  waves.push({
-    mx: mouseX,   // shape at the moment of the click
-    scale: 1,
-    alpha: 255
-  });
+function mousePressed(){
+
+ if(waves.length > MAX_WAVES){
+   waves.shift();
+ }
+
+ waves.push({
+   points:createFlowerPoints(mouseX),
+   scale:1,
+   alpha:255
+ });
+
 }
 
-function drawWave(w) {
 
-  push();
 
-  translate(width/2, height/2);
+function createFlowerPoints(mx){
 
-  scale(w.scale);
+  let points=[];
 
-  stroke(255, w.alpha);
-  noFill();
+  let mouseRange=max(0,mx-width/2);
 
-  beginShape();
 
-  let mx = max(0, w.mx - width/2);
+  for(let i=0;i<360;i+=3){
 
-  for (let i = 0; i < 360; i += 3) {
+    let r=100+sin(i*petalNumber+mx*2)*mouseRange;
 
-    let r = 100 + sin(i * petalNumber + mx*2) * mx;
+    points.push({
+      x:r*cos(i),
+      y:r*sin(i)
+    });
 
-    let x = r * cos(i);
-    let y = r * sin(i);
-
-    vertex(x, y);
   }
 
-  endShape(CLOSE);
+  return points;
+}
 
-  pop();
+function drawWave(w){
+
+push();
+
+translate(width/2,height/2);
+scale(w.scale);
+
+stroke(255,w.alpha);
+noFill();
+
+beginShape();
+
+for(let p of w.points){
+ vertex(p.x,p.y);
+}
+
+endShape(CLOSE);
+pop();
+
 }
 
 // resize automatique

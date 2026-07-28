@@ -9,7 +9,7 @@ let current = 0;
 const FLOWERS_DELAY = 0; // Flowers appear after 5 seconds
 
 const TEXT_DELAY = 5000;     // Text appears after 0.5 seconds
-const TEXT_VISIBLE = 8000;  // Stay visible for 7 seconds
+const TEXT_VISIBLE = 10000;  // Stay visible for 7 seconds
 const TEXT_FADE = 2000;      // Fade duration (2 seconds)
 // ----------------------------
 
@@ -49,7 +49,7 @@ function draw() {
   // Rectangle only on flowers layer
   if (mouseIsPressed) {
     extraCanvas.noStroke();
-    extraCanvas.fill(220);
+    extraCanvas.fill(240);
     extraCanvas.rect(20, 20, width, height);
   }
 
@@ -57,7 +57,7 @@ function draw() {
   // CANVA 2 - TEXT
   //-----------------------------------------
 
-  background(220);
+  background(240);
 
   // Display flowers underneath the text
   image(extraCanvas, 0, 0);

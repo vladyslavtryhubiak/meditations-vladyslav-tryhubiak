@@ -4,8 +4,7 @@ let oldX;
 let oldY;
 
 let current = 0;
-let message =
-  "     Our knowledge about the world is just a mere simplification of it.\nWe discover just enough to use it, but never enough to truly understand.";
+let message = "     Our knowledge about the world is just a mere simplification of it.\nWe discover just enough to use it, but never enough to truly understand.";
 
 let extraCanvas;
 let animationFinished = false;
@@ -16,7 +15,7 @@ let bg;
 // ---------- TIMING ----------
 const ANIMATION_DELAY = 0;
 const TEXT_DELAY = 5500;
-const TEXT_VISIBLE = 8000;
+const TEXT_VISIBLE = 10000;
 const TEXT_FADE = 2000;
 // ----------------------------
 
@@ -33,7 +32,7 @@ function draw() {
 
   let t = millis();
 
-  background(220);
+  background(240);
   //-----------------------------------------
   // CANVAS 1 - ANIMATION
   //-----------------------------------------
@@ -44,7 +43,7 @@ function draw() {
     extraCanvas.strokeWeight(3);
 
     noiseDetail(5);
-    let y = map(noise(frameCount * 0.02), 0, 1, 200, 400);
+    let y = map(noise(frameCount * 0.02), 0, 0.9, 230, 440);  //200 & 400   //0? intensity, yVar, yYvar)
 
     x += 4;
 
@@ -108,7 +107,7 @@ function mousePressed() {
 
 function resetSketch() {
 
- extraCanvas.background(220);
+ extraCanvas.background(240);
 
   x = 200;
   oldX = undefined;
