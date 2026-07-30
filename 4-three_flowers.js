@@ -3,7 +3,7 @@
 let angle = 0;
 let extraCanvas;
 
-let message = "  We want to collect, to describe it all, but in\ndoing so, we might miss what it truly is about.";
+let message = "   We want to collect, to describe it all, but in\ndoing so, we might miss what it truly is about.";
 let current = 0;
 
 
